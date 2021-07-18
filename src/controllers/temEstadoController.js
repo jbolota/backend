@@ -4,7 +4,6 @@ var Estado = require('../model/estado');
 var Marcacao = require('../model/marcacao');
 
 var sequelize = require('../model/database.js');
-
 const controllers = {}
 sequelize.sync()
 
