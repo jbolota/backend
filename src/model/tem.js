@@ -19,6 +19,7 @@ var tem = sequelize.define('tem', {
         }
     },
     data: Sequelize.DATE,
+    hora: Sequelize.TIME,
     obs: Sequelize.STRING
     
 },

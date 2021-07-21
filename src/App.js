@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+
+const middleware = require('./middleware');
+
 // Configurar CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -13,7 +16,7 @@ const userRouters = require('./routes/userRoute.js');
 const especiRouters = require('./routes/especialidadeRoute.js');
 const clinicaRouters = require('./routes/clinicaRoute.js')
 const marcacaoRouters = require('./routes/marcacaoRoute.js');
-const temMarcacaoRouters = require('./routes/temMarcacaoRoute.js');
+const temAtrasoRouters = require('./routes/temAtrasoRoute.js');
 const criaNotificacaoRouters = require('./routes/notificacaoRoute.js');
 const temEstadoRouters = require('./routes/temEstadoRoute.js');
 
@@ -23,10 +26,10 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 
 app.use('/users',userRouters);
-app.use('/especialidade', especiRouters);
+app.use('/especialidade', middleware.checkToken, especiRouters);
 app.use('/clinica', clinicaRouters);
 app.use('/marcacao', marcacaoRouters);
-app.use('/geremarcacao', temMarcacaoRouters);
+//app.use('/geremarcacao', temAtrasoRouters);
 app.use('/notificacao', criaNotificacaoRouters);
 app.use('/estado', temEstadoRouters);
 

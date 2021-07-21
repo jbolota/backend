@@ -36,13 +36,13 @@ controllers.listatipo = async(req, res) =>{
 //CRIAR ESTADO PARA MARCAÇÃO DE PACIENTE
 controllers.adiciona = async (req,res) =>{
     //data
-    const {marcacaoId,estadoId,obs} = req.body;
+    const {id1,id2} = req.params;
     //create
     const data = await tem.create({
         data: new Date(),
-        marcacaoId: marcacaoId,
-        estadoId: estadoId,
-        obs: obs
+        marcacaoId: id1,
+        estadoId: id2,
+        obs: "CHECKIN FEITO VIA QRCODE"
     })
     .then(function(data){
         return data;

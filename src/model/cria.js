@@ -6,6 +6,7 @@ var Notificacao = require('./notificacao');
 
 var cria = sequelize.define('cria', {
     data: Sequelize.DATE,
+    hora: Sequelize.TIME,
     marcacaoId:{
         type:Sequelize.INTEGER,
         references:{
